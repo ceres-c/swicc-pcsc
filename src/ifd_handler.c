@@ -583,7 +583,7 @@ RESPONSECODE IFDHTransmitToICC(DWORD Lun, SCARD_IO_HEADER SendPci,
             memcpy(msg_tx.data.buf, &TxBuffer[TxLength - len_rem],
                    icc_buf_len_exp);
             msg_tx.hdr.size =
-                offsetof(swicc_net_msg_data_st, buf) + icc_buf_len_exp;
+                (uint32_t)(offsetof(swicc_net_msg_data_st, buf) + icc_buf_len_exp);
             if (client_msg_io(slot_num, true) != 0 ||
                 msg_rx.data.ctrl != SWICC_NET_MSG_CTRL_SUCCESS)
             {
